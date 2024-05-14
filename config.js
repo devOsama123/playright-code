@@ -14,7 +14,7 @@ const dev = {
     jsonFolder: __dirname,
     appURL: "http://localhost:3000/videoPlayer/",
     userCacheDir: "/home/ubuntu/play-logs/cache",
-    executablePath: "/usr/share/applications/google-chrome",
+    executablePath: "/usr/bin/google-chrome",
     URL: 0,
 };
 
