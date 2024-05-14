@@ -1,8 +1,19 @@
 import {chromium} from "playwright";
 import config from "./config.js";
-
+import Xvfb from "xvfb";
 export default async function play(req, res, next) {
     let browser = null;
+    let xvfb = new Xvfb({
+        silent:    true,
+        xvfb_args: ["-screen", "0", '1280x760x24', "-ac"],
+    });
+    xvfb.start((err)=>{
+        if (err)
+            xvfb.stop();
+        console.log(err)
+    })
+
+
     browser = await chromium.launchPersistentContext(
         config.userCacheDir,
         {
