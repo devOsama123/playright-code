@@ -14,25 +14,13 @@ const dev = {
     jsonFolder: __dirname,
     appURL: "http://localhost:3000/videoPlayer/",
     userCacheDir: "/var/www/node/cache",
-    executablePath:
-        "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
-    URL: 0,
-};
-
-const production = {
-    port: 5001,
-    serverURL: "https://api-animation.easycoach.club/",
-    videoFolder: __dirname,
-    jsonFolder: __dirname,
-    appURL: "https://animation.easycoach.club/videoPlayer/",
-    userCacheDir: "/var/www/node/cache",
     executablePath: "/usr/bin/google-chrome",
     URL: 0,
 };
 
+
 export const config = {
-    dev,
-    production,
+    dev
 };
 
 export default config[env]
