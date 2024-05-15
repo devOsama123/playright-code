@@ -1,5 +1,6 @@
-import {app} from "./server.js";
-import play from "./playwright.js";
+const {app} = require("./server.js");
+const play = require("./playwright.js");
+const {createMediaChrome} = require("./videoController.js");
 
 
 app.get('/', (req, res) => {
@@ -7,3 +8,5 @@ app.get('/', (req, res) => {
 })
 
 app.get("/play", play);
+
+app.post("/generateVideo1/chrome/async:id", createMediaChrome);
