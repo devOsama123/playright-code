@@ -1,4 +1,4 @@
-const env = "dev";
+const env = "production";
 
 const dev = {
     port: 5001,

@@ -2,6 +2,7 @@ const fs = require('fs');
 const fsPromises = require("fs/promises");
 const {chromium} = require("playwright");
 const config = require("./config.js");
+const Xvfb = require('xvfb');
 const {isJsonString, createChromeVideoGenerationFolders, getChromeJsonFilePath, uniqueFilename, getChromeVideoFilePath, convertWebmToMp4} = require("./helperFunctions");
 var path = require("path");
 
@@ -28,6 +29,15 @@ async function createMediaChrome(req, res, next) {
     try {
         console.log("inside try browser");
         let browser = null;
+        let xvfb = new Xvfb({
+            silent:    true,
+            xvfb_args: ["-screen", "0", '1280x760x24', "-ac"],
+        });
+        xvfb.start((err)=>{
+            if (err)
+                xvfb.stop();
+            console.log(err)
+        })
         browser = await chromium.launchPersistentContext(
             config.userCacheDir,
             {
@@ -60,7 +70,7 @@ async function createMediaChrome(req, res, next) {
 
         await download.saveAs(videoPath);
         await convertWebmToMp4(inp, out);
-        const videoUrl = `http://localhost:8000/libraries/chromeVideoGeneration/videosTemp/${videoId}.webm`;
+        const videoUrl = `http://51.20.6.107/libraries/chromeVideoGeneration/videosTemp/${videoId}.webm`;
         console.log(videoUrl);
         res.send({
             status: "ok",
