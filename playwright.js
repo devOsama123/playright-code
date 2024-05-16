@@ -20,7 +20,7 @@ async function play(req, res, next) {
             timeout: 0,
             deviceScaleFactor: 1,
             viewport: {width: 1280, height: 760},
-            args: ["--use-gl=egl"]
+            args: ["--use-gl=egl",'--disable-web-security', '--allow-running-insecure-content']
             // args:              [
             //   '--display='+xvfb._display
             // ],
