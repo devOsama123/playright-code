@@ -14,6 +14,8 @@ async function createMediaChrome(req, res, next) {
 
 
     const json = req.body.data;
+const id = JSON.parse(json).jsonId;
+    console.log('id',id)
 
     if (!isJsonString(json)) return res.status(400).send({message: `Invalid JSON`});
 

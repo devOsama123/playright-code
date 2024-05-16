@@ -4,7 +4,7 @@ const {createMediaChrome} = require("./videoController.js");
 
 
 app.get('/', (req, res) => {
-    res.send('Hello World!')
+    res.json({ message: 'Hello World!' });
 })
 
 app.get("/play", play);
