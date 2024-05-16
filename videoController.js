@@ -48,10 +48,10 @@ const id = JSON.parse(json).jsonId;
                 timeout: 0,
                 deviceScaleFactor: 1,
                 viewport: {width: 1280, height: 760},
-                args: ["--use-gl=egl"]
-                // args:              [
-                //   '--display='+xvfb._display
-                // ],
+                // args: ["--use-gl=egl"]
+                args:              [
+                  '--display='+xvfb._display
+                ],
             }
         );
         const page = await browser.newPage();
