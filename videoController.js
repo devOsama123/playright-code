@@ -23,7 +23,7 @@ const id = JSON.parse(json).jsonId;
     const jsonSavePath = getChromeJsonFilePath(jsonId);
     const videoId = jsonId;
     const videoPath = getChromeVideoFilePath(`${videoId}.webm`);
-    const pageToLoad = `https://animation.easycoach.club/mediaPlayer/${jsonId}`;
+    const pageToLoad = `https://animation.easycoach.club/mediaPlayer/${id}`;
 
     fs.writeFileSync(jsonSavePath, json);
 
