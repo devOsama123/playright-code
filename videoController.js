@@ -26,9 +26,9 @@ async function createMediaChrome(req, res, next) {
     fs.writeFileSync(jsonSavePath, json);
 
     if (!fs.existsSync(jsonSavePath)) return console.log("json not found");
+    let browser = null;
     try {
         console.log("inside try browser");
-        let browser = null;
         let xvfb = new Xvfb({
             silent:    true,
             xvfb_args: ["-screen", "0", '1280x760x24', "-ac"],
@@ -83,6 +83,7 @@ async function createMediaChrome(req, res, next) {
 
     } catch (err) {
         console.log("Browser error: ", err);
+        if(browser) browser.close();
     }
 }
 
