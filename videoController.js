@@ -43,7 +43,7 @@ const id = JSON.parse(json).jsonId;
         browser = await chromium.launchPersistentContext(
             config.userCacheDir,
             {
-                headless: false,
+                headless: true,
                 executablePath: config.executablePath,
                 timeout: 0,
                 deviceScaleFactor: 1,
