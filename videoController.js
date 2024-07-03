@@ -72,7 +72,7 @@ const id = req.params.id;
 
         await download.saveAs(videoPath);
         // await convertWebmToMp4(inp, out);
-        const videoUrl = `http://51.20.6.107/libraries/chromeVideoGeneration/videosTemp/${videoId}.webm`;
+        const videoUrl = `http://16.170.202.180/libraries/chromeVideoGeneration/videosTemp/${videoId}.webm`;
         // const videoUrlTemp = `http://51.20.6.107/libraries/chromeVideoGeneration/mp4Videos/${videoId}-converted.mp4`;
         console.log(videoUrl);
         res.send({
