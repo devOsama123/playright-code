@@ -36,6 +36,7 @@ const id = req.params.id;
         const xvfb = spawn('Xvfb', [':99', '-screen', '0', '1920x1080x24'], {
             stdio: 'inherit' // This will allow you to see Xvfb's output in your terminal
         });
+        process.env.DISPLAY = ':99';
         // let xvfb = new Xvfb({
         //     silent:    true,
         //     xvfb_args: ["-screen", "0", '1280x760x24', "-ac"],
