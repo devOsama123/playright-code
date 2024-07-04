@@ -1,7 +1,6 @@
 const {chromium} = require("playwright");
 const config = require("./config.js");
 const Xvfb = require('xvfb');
-const { spawn } = require('child_process');
 async function play(req, res, next) {
     let browser = null;
     // const xvfb = spawn('Xvfb', [':99', '-screen', '0', '1920x1080x24'], {

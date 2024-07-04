@@ -2,7 +2,8 @@ const fs = require('fs');
 const fsPromises = require("fs/promises");
 const {chromium} = require("playwright");
 const config = require("./config.js");
-const Xvfb = require('xvfb');
+// const Xvfb = require('xvfb');
+const { spawn } = require('child_process');
 const {isJsonString, createChromeVideoGenerationFolders, getChromeJsonFilePath, uniqueFilename, getChromeVideoFilePath, convertWebmToMp4} = require("./helperFunctions");
 var path = require("path");
 
@@ -31,15 +32,19 @@ const id = req.params.id;
     let browser = null;
     try {
         console.log("inside try browser");
-        let xvfb = new Xvfb({
-            silent:    true,
-            xvfb_args: ["-screen", "0", '1280x760x24', "-ac"],
+
+        const xvfb = spawn('Xvfb', [':99', '-screen', '0', '1920x1080x24'], {
+            stdio: 'inherit' // This will allow you to see Xvfb's output in your terminal
         });
-        xvfb.start((err)=>{
-            if (err)
-                xvfb.stop();
-            console.log(err)
-        })
+        // let xvfb = new Xvfb({
+        //     silent:    true,
+        //     xvfb_args: ["-screen", "0", '1280x760x24', "-ac"],
+        // });
+        // xvfb.start((err)=>{
+        //     if (err)
+        //         xvfb.stop();
+        //     console.log(err)
+        // })
         browser = await chromium.launchPersistentContext(
             config.userCacheDir,
             {
