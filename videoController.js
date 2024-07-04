@@ -35,18 +35,17 @@ const id = req.params.id;
             silent:    true,
             xvfb_args: ["-screen", "0", '1280x760x24', "-ac"],
         });
-        // xvfb.start((err)=>{
-        //     if (err)
-        //         xvfb.stop();
-        //     console.log(err)
-        // })
+        xvfb.start((err)=>{
+            if (err)
+                xvfb.stop();
+            console.log(err)
+        })
         browser = await chromium.launchPersistentContext(
             config.userCacheDir,
             {
                 headless: false,
                 executablePath: config.executablePath,
                 timeout: 0,
-                deviceScaleFactor: 1,
                 viewport: {width: 1280, height: 760},
                 // args: ["--use-gl=egl"]
                 args:              [
