@@ -43,7 +43,7 @@ const id = req.params.id;
         browser = await chromium.launchPersistentContext(
             config.userCacheDir,
             {
-                headless: true,
+                headless: false,
                 executablePath: config.executablePath,
                 timeout: 0,
                 deviceScaleFactor: 1,
