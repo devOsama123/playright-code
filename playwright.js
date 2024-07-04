@@ -1,17 +1,21 @@
 const {chromium} = require("playwright");
 const config = require("./config.js");
 const Xvfb = require('xvfb');
+const { spawn } = require('child_process');
 async function play(req, res, next) {
     let browser = null;
-    let xvfb = new Xvfb({
-        silent:    true,
-        xvfb_args: ["-screen", "0", '1280x760x24', "-ac"],
+    // let xvfb = new Xvfb({
+    //     silent:    true,
+    //     xvfb_args: ["-screen", "0", '1280x760x24', "-ac"],
+    // });
+    // xvfb.start((err)=>{
+    //     if (err)
+    //         xvfb.stop();
+    //     console.log(err)
+    // })
+    const xvfb = spawn('Xvfb', [':99', '-screen', '0', '1920x1080x24'], {
+        stdio: 'inherit' // This will allow you to see Xvfb's output in your terminal
     });
-    xvfb.start((err)=>{
-        if (err)
-            xvfb.stop();
-        console.log(err)
-    })
     browser = await chromium.launchPersistentContext(
         config.userCacheDir,
         {
